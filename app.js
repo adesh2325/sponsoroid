@@ -8,6 +8,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 const multer = require('multer');
+let alert = require('alert'); 
 
 app.get("/",function(req,res){
 res.sendFile(__dirname + "/index.html");
@@ -26,7 +27,7 @@ app.get("/companyform",function(req,res){
 });
 
             
-mongoose.connect('mongodb+srv://riteshbaindara25:Ai9L6V2WquLRNmug@cluster0.stgntt6.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://sinhaadesh123:mzTDpkXXfp0Xq6MY@cluster0.7xs7cmh.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("MONGO CONNECTION OPEN!!!")
     })
@@ -93,7 +94,8 @@ app.post("/creatorlogin",function(req,res){
     // console.log(username);
     creator.findOne({username:username}).then(post=>{
         if(post===null){
-            res.write("<h1>Not registered</h1>");
+            alert("Wrong Username");
+            res.send;
            
         }
         else if(post.password===password){ 
@@ -102,7 +104,7 @@ app.post("/creatorlogin",function(req,res){
         });
         }
         else{
-            console.log(post.password);
+           alert("Wrong Crediantial");
         }
         });
 });
@@ -149,7 +151,7 @@ app.post("/companylogin",function(req,res){
     // console.log(username);
     company.findOne({username:username}).then(post=>{
         if(post===null){
-            res.write("<h1>Not registered</h1>");
+            alert("Wrong Username");
             res.send;
         }
         else if(post.password===password){
@@ -158,7 +160,7 @@ app.post("/companylogin",function(req,res){
             });
         }
         else{
-            console.log(post.password);
+            alert("Wrong Credentials");
         }
         });
 });
