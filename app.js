@@ -27,7 +27,7 @@ app.get("/companyform",function(req,res){
 });
 
             
-mongoose.connect('mongodb+srv://sinhaadesh123:mzTDpkXXfp0Xq6MY@cluster0.7xs7cmh.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://sinhaadesh123:Mqv95a3VIduAMfcl@cluster0.qc9feef.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("MONGO CONNECTION OPEN!!!")
     })
@@ -140,7 +140,7 @@ app.post("/companysignup",(req,res)=>{
             newcompany.save();
             console.log(newcompany.avatar);
             creator.find({}).then(function(items){
-                res.render("company-1",{y:post,comp:items});
+                res.render("company-1",{y:newcompany,comp:items});
             });
         }
     })
@@ -173,7 +173,8 @@ app.post("/temp2",function(req,res){
     console.log(req.body.Description);
     res.render("profilecompany",{img:req.body.avatar,ul:req.body.ulink,il:req.body.ilink,n:req.body.name,e:req.body.email,c:req.body.cc,d:req.body.Description});
 })
-app.listen(3000,function(){
-    console.log("haa bhai kam gya");
+app.listen(process.env.PORT||3000,function(){
+    console.log("haa bhai kam gya");
 });
 // Ai9L6V2WquLRNmug
+//Mqv95a3VIduAMfcl
